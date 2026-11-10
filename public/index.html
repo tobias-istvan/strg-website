@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>strg – find where your disk space went</title>
+<meta name="description" content="strg is a free macOS app that finds and clears the disk space your Mac loses to hidden caches, build folders and old tooling. It previews first and runs entirely on your Mac.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F4F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101114" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://strg.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://strg.app/">
+<meta property="og:title" content="strg – find where your disk space went">
+<meta property="og:description" content="A free macOS app that finds the caches, build folders and old tooling eating your disk. Preview first, local only, no telemetry.">
+<meta property="og:image" content="https://strg.app/assets/img/dashboard.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="strg, back to top">
+      <span>strg</span><span class="cursor" aria-hidden="true"></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#safety">Safety</a>
+      <a href="#features">Features</a>
+      <a class="nav-cta" href="#install">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero wrap" id="top">
+    <p class="pill mono">Free · macOS 13+ · Apple Silicon</p>
+    <h1><span>Find where</span><span><em>80 GB</em> went.</span></h1>
+    <p class="lead">strg finds and clears the disk space your Mac loses to hidden caches, build folders and old tooling. It shows you exactly what will go, and cleans only after you confirm.</p>
+
+    <div class="cmd cmd-hero">
+      <div class="cmd-text mono"><span class="prompt" aria-hidden="true">$</span><code>brew install --cask tobias-istvan/strg/strg</code></div>
+      <button class="copy" type="button" data-copy="brew install --cask tobias-istvan/strg/strg" aria-label="Copy install command">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+        <span class="copy-label">Copy</span>
+      </button>
+    </div>
+    <div class="hero-links">
+      <a class="link-accent" href="https://github.com/tobias-istvan/homebrew-strg/releases">Or download from Releases on GitHub →</a>
+      <span class="muted">No account, no network access, no telemetry.</span>
+    </div>
+
+    <figure class="shot hero-shot">
+      <img src="/assets/img/dashboard.png" width="1198" height="795" alt="The strg dashboard: 145 GB free of 245 GB, a bar split into Regenerable 9.4 GB, Caution 11.5 GB, Personal 485 MB and Other, then the biggest groups: Containers and VMs, App caches, Project build artifacts, Package manager and toolchain caches.">
+      <figcaption>The dashboard groups what is on your disk by meaning, with the space you would really get back.</figcaption>
+    </figure>
+
+    <div class="trio">
+      <div><h3>Local only</h3><p>It runs entirely on your Mac. No account, no network access, no telemetry.</p></div>
+      <div><h3>Preview first</h3><p>Every cleanup shows each item, its size and the total it frees before anything is deleted.</p></div>
+      <div><h3>Your say-so</h3><p>Nothing runs without it. Automations in Auto mode are limited to regenerable items.</p></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem wrap">
+    <div class="split">
+      <div class="split-a">
+        <p class="eyebrow mono">The problem</p>
+        <h2>“System Data: 180 GB.” And no way to look inside.</h2>
+        <p class="sub">If you work with Node, Rust, Python, Xcode, Docker or local models, that number keeps growing and macOS keeps quiet about why.</p>
+      </div>
+      <div class="split-b rows">
+        <div>
+          <h3>It can’t see hidden folders</h3>
+          <p><code>~/.npm</code>, <code>~/Library/Caches</code> and <code>~/.cargo</code> never show up in macOS Storage.</p>
+        </div>
+        <div>
+          <h3>It lumps everything together</h3>
+          <p>Caches, toolchains, simulators and model files all end up under “System Data” or “Developer”.</p>
+        </div>
+        <div>
+          <h3>It never says what is safe to delete</h3>
+          <p>You get a size, not an answer to “can I remove this?”. Other cleaners are paid, closed, and scan the whole machine. strg is free and looks at your home folder, where developer tools leave their caches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="how band-top" id="how">
+    <div class="wrap">
+      <p class="eyebrow mono">How it works</p>
+      <h2 class="narrow-16">Scan, review, clean. In that order.</h2>
+      <div class="split split-how">
+        <ol class="steps">
+          <li><span class="num mono" aria-hidden="true">01</span><div><h3>Scan</h3><p>strg walks your home folder and groups what it finds by meaning: node_modules, Xcode, Docker, AI models. Each group shows the space you would actually get back.</p></div></li>
+          <li><span class="num mono" aria-hidden="true">02</span><div><h3>Review</h3><p>You get a plan: every item with its size, and a plain total such as “frees ≈ 868 MB”. Tick what you want, then choose the Trash or permanent deletion.</p></div></li>
+          <li><span class="num mono" aria-hidden="true">03</span><div><h3>Clean</h3><p>Only after you confirm. Every action is written to an activity log file.</p></div></li>
+        </ol>
+        <figure class="shot">
+          <img src="/assets/img/review.png" width="1196" height="801" loading="lazy" alt="The Review and clean window: a list of node_modules and cache folders with sizes, unticked items marked as in use or in a project with uncommitted changes, a footer reading 2 selected, frees about 868 MB, and a red Clean button.">
+          <figcaption>Review &amp; clean. Items that are in use, or sit in projects with uncommitted changes, are listed with the reason and skipped.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="safety band" id="safety">
+    <div class="wrap">
+      <p class="eyebrow mono">Safe by default</p>
+      <h2 class="narrow-18">It deletes files, so it shows you first.</h2>
+      <p class="sub wide">That is the trade-off, and strg is built around it. Every finding carries a badge and a plain-language note on what it is and how it comes back.</p>
+
+      <div class="cards">
+        <div class="card"><div class="card-head"><span class="dot dot-green" aria-hidden="true"></span><h3>Regenerable</h3></div><p>Comes back automatically when needed. The only kind Auto automations may touch.</p></div>
+        <div class="card"><div class="card-head"><span class="dot dot-amber" aria-hidden="true"></span><h3>Caution</h3></div><p>Can be recreated, but it takes time or a download. Shown for you to review, never cleaned automatically.</p></div>
+        <div class="card"><div class="card-head"><span class="dot dot-violet" aria-hidden="true"></span><h3>Personal</h3></div><p>Your data. strg lists it, and you review it yourself.</p></div>
+      </div>
+
+      <div class="guards">
+        <div><h3>Leaves work in progress alone</h3><p>Projects with uncommitted git changes and projects with a running dev server are skipped.</p></div>
+        <div><h3>Skips anything in use</h3><p>If a process has it open, strg tells you which one and leaves it where it is.</p></div>
+        <div><h3>Refuses risky paths</h3><p>Symlinked and protected folders are refused outright.</p></div>
+        <div><h3>Counts the real size</h3><p>The total is what you will actually free, including hard links (pnpm) and sparse files (Docker disk images).</p></div>
+        <div><h3>Trash or permanent, your call</h3><p>Permanent deletion cannot be undone, which is why the plan always comes first.</p></div>
+        <div><h3>A log of every action</h3><p>Everything strg does is written to a file you can read.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features wrap" id="features">
+    <p class="eyebrow mono">Features</p>
+    <h2 class="narrow-18">Look around. Then let it keep watch.</h2>
+
+    <div class="feature feature-explorer">
+      <div class="feature-text">
+        <h3>Explorer</h3>
+        <p>A treemap and a sortable list of everything in your home folder, hidden folders included. Show any item in Finder or move it to the Trash.</p>
+        <h4>Fast to come back to</h4>
+        <p class="small">strg keeps a saved index and follows filesystem events, so rescans take seconds.</p>
+      </div>
+      <figure class="shot">
+        <img src="/assets/img/explorer.png" width="1197" height="799" loading="lazy" alt="The Explorer view: a treemap of the home folder where Library, work and projects take the most space, above a sortable table of folders with size, share, cleanable amount, item count and modified date.">
+      </figure>
+    </div>
+
+    <div class="feature feature-menubar">
+      <div class="feature-text">
+        <div class="menubar-frame">
+          <img src="/assets/img/menubar.png" width="294" height="272" loading="lazy" alt="The strg menu bar item showing 145 GB free, with a menu: 145 GB free of 245 GB, 9.4 GB can be cleaned safely, Scan Now, Review and Clean 9.4 GB, Open strg, Automations, Settings, Quit.">
+        </div>
+        <h3>Menu bar agent</h3>
+        <p>Free space sits next to the icon. When it drops below a limit you set, strg sends a low-space alert with a one-click review.</p>
+      </div>
+      <div class="feature-wide">
+        <figure class="shot">
+          <img src="/assets/img/automations.png" width="1194" height="797" loading="lazy" alt="The Automations view with two rules, Weekly cache cleanup set to Automatic and Inactive project cleanup set to Ask, plus a suggested Low space rescue rule.">
+        </figure>
+        <h3>Automations</h3>
+        <p class="wide">Rules that run on a schedule or when space runs low, in one of three modes: Notify, Ask or Auto. Auto is allowed only for regenerable items. You can also limit a rule to items that have sat idle for a set number of days.</p>
+      </div>
+    </div>
+
+    <div class="feature feature-cli">
+      <div class="feature-text">
+        <h3>A command line, too</h3>
+        <p>A strg command-line tool ships alongside the app.</p>
+        <div class="terminal mono">
+          <div><span class="prompt" aria-hidden="true">$ </span>strg scan</div>
+          <div><span class="prompt" aria-hidden="true">$ </span>strg suggest</div>
+          <div><span class="prompt" aria-hidden="true">$ </span>strg clean --dry-run <span class="prompt">  # preview only, deletes nothing</span></div>
+        </div>
+      </div>
+      <div class="feature-text">
+        <h3>A catalog of about 60 rules</h3>
+        <p>Each rule knows what a folder is and how it comes back. They cover the usual suspects:</p>
+        <ul class="chips mono">
+          <li>node_modules</li><li>.next</li><li>Rust target</li><li>Python venvs</li><li>Homebrew</li>
+          <li>Xcode DerivedData</li><li>Xcode simulators</li><li>Docker</li><li>Android emulators</li>
+          <li>Ollama models</li><li>Hugging Face models</li><li>editor caches</li>
+          <li class="more">and more</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="install" id="install">
+    <div class="wrap">
+      <p class="eyebrow mono">Install</p>
+      <h2>One line in Terminal.</h2>
+
+      <div class="cmd cmd-install">
+        <div class="cmd-text mono"><span class="prompt" aria-hidden="true">$</span><code>brew install --cask tobias-istvan/strg/strg</code></div>
+        <button class="copy" type="button" data-copy="brew install --cask tobias-istvan/strg/strg" aria-label="Copy install command">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+      <div class="install-links">
+        <a href="https://github.com/tobias-istvan/homebrew-strg/releases">Prefer a download? Releases on GitHub →</a>
+        <a href="https://github.com/tobias-istvan/homebrew-strg">The Homebrew tap →</a>
+      </div>
+
+      <dl class="reqs">
+        <div><dt class="mono">Chip</dt><dd>Apple Silicon</dd></div>
+        <div><dt class="mono">System</dt><dd>macOS 13 or later</dd></div>
+        <div><dt class="mono">Price and license</dt><dd>Free, MIT license</dd></div>
+      </dl>
+
+      <div class="notes">
+        <div class="note">
+          <h3>First launch</h3>
+          <p>strg is ad-hoc signed, not notarized by Apple, so macOS will warn you the first time you open it. To open it anyway, go to System Settings → Privacy &amp; Security, scroll to Security and choose Open Anyway. On macOS 13 and 14 you can also Control-click the app and choose Open.</p>
+        </div>
+        <div class="note note-warn">
+          <h3>Before you clean</h3>
+          <p>strg frees disk space by deleting files such as caches and build folders. It shows you exactly what will go before each cleanup, and deleting is permanent unless you choose the Trash. Provided as is, without warranty; use at your own risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="support" id="support">
+    <div class="wrap support-inner">
+      <div>
+        <h2>strg is free.</h2>
+        <p>If it gave you back some disk space and you would like to chip in, you can. There is no catch and nothing is locked behind it.</p>
+      </div>
+      <a class="btn" id="donate" href="https://donate.stripe.com/8x25kC7Yr15td7VcEDgjC00" rel="noopener">Support strg</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-brand mono">strg</p>
+      <p class="footer-note">MIT license. The source repository is private; the license, the downloads and the Homebrew tap are on GitHub.</p>
+    </div>
+    <nav aria-label="Links">
+      <a href="https://github.com/tobias-istvan/homebrew-strg/releases">Releases</a>
+      <a href="https://github.com/tobias-istvan/homebrew-strg">Homebrew tap</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>
